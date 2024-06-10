@@ -110,6 +110,7 @@ function Img() {
       transition={{ duration: 0.5, ease: 'anticipate' }}
     >
       <img
+        loading="lazy"
         src="/husam.png"
         alt="Hüsam Yıldırım"
         className="mx-auto mb-4 w-28 rounded-full border-4 sm:mb-10 sm:w-52"
