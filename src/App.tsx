@@ -105,8 +105,8 @@ export default function App() {
 function Img() {
   return (
     <motion.div
-      initial={{ opacity: .5, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5, ease: 'anticipate' }}
     >
       <img
@@ -123,7 +123,7 @@ function Name() {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'anticipate', delay: .2 }}
+      transition={{ duration: 0.5, ease: 'anticipate' }}
     >
       <p className="mb-4 text-center text-base sm:mb-9 sm:text-2xl">
         <span className="block font-semibold">Hey, I'm Hüsam.</span>
@@ -136,76 +136,84 @@ function Name() {
 
 function Time() {
   return (
-    <motion.div transition={{ delayChildren: .5 }}>
-      <div className="flex justify-center">
-        <Timeline
-          className="flex-1 text-base text-stone-200"
-          mode="alternate"
-          pending="Recording more achievements..."
-        >
-          {TIMELINE_DATA.map((item, index) => (
-            <Timeline.Item key={item.companyName}>
-              <motion.div
-                initial={{ x: index % 2 === 0 ? 100 : -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.5,
-                  ease: 'anticipate',
-                  delay: index * 0.3,
-                }}
-              >
-                <p className="text-sm sm:text-base">
-                  {item.description}{' '}
-                  {item.companyName && (
-                    <a href={item.url}
-                       target="_blank"
-                       className="text-[#69b1ff]">
-                      {item.companyName}{' '}
-                    </a>
-                  )}
-                  {item.rest && `${item.rest}`}
-                </p>
-              </motion.div>
-            </Timeline.Item>
-          ))}
-        </Timeline>
-      </div>
-    </motion.div>
+    <div className="flex justify-center">
+      <Timeline
+        className="flex-1 text-xs sm:text-base text-stone-200"
+        mode="alternate"
+        pending="Recording more achievements..."
+      >
+        {TIMELINE_DATA.map((item, index) => (
+          <Timeline.Item key={item.companyName}>
+            <motion.div
+              initial={{ x: index % 2 === 0 ? 100 : -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                ease: 'anticipate',
+                delay: index * 0.3,
+              }}
+            >
+              <p className="text-xs sm:text-base">
+                {item.description}{' '}
+                {item.companyName && (
+                  <a href={item.url}
+                     target="_blank"
+                     className="text-[#69b1ff]">
+                    {item.companyName}{' '}
+                  </a>
+                )}
+                {item.rest && `${item.rest}`}
+              </p>
+            </motion.div>
+          </Timeline.Item>
+        ))}
+      </Timeline>
+    </div>
   )
 }
 
 
 function Links() {
   return (
-    <div className="mx-auto flex w-fit items-center justify-center gap-1 rounded-full max-sm:px-4 max-sm:py-1 sm:mb-4">
-      {LINKS.map(({ href, src, alt }) => (
-        <Popover trigger="hover"
-                 content={alt}>
-          <a key={alt}
-             href={href}
-             target="_blank"
-             className="transform p-1.5 transition duration-300 hover:scale-110"
-          >
-            <img src={src}
-                 className="w-7"
-                 alt={alt}
-            />
-          </a>
-        </Popover>
-      ))}
-    </div>
+    <motion.div
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'anticipate', delay: 2 }}>
+      <div className="mx-auto flex w-fit items-center justify-center gap-1 rounded-full max-sm:px-4 max-sm:py-1 sm:mb-4">
+        {LINKS.map(({ href, src, alt }) => (
+          <Popover trigger="hover"
+                   content={alt}>
+            <a key={alt}
+               href={href}
+               target="_blank"
+               className="transform p-1.5 transition duration-300 hover:scale-110"
+            >
+              <img src={src}
+                   className="w-7"
+                   alt={alt}
+              />
+            </a>
+          </Popover>
+        ))}
+      </div>
+    </motion.div>
   )
 }
 
 function Meeting() {
   return (
-    <div className="flex justify-center">
-      <a
-        href="https://proghusam.youcanbook.me/"
-        className="rounded-full bg-[#1F1F1F] px-6 py-3 text-center transition-colors hover:text-[#69b1ff]"
-        target="_blank">
-        Book a meeting
-      </a>
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'anticipate', delay: 2.5 }}>
+      <div className="flex justify-center">
+        <a
+          href="https://proghusam.youcanbook.me/"
+          className="rounded-full bg-[#1F1F1F] px-6 py-3 text-center transition-colors hover:text-[#69b1ff]"
+          target="_blank">
+          Book a meeting
+        </a>
+      </div>
+    </motion.div>
   )
 }
