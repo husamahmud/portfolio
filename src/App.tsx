@@ -74,9 +74,13 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const handleLoading = () => setIsLoading(false)
-    window.addEventListener('load', handleLoading)
-    return () => window.removeEventListener('load', handleLoading)
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [])
 
   if (isLoading) return (
