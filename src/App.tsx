@@ -138,7 +138,7 @@ function Time() {
       <Timeline
         className="flex-1 text-xs sm:text-base text-stone-200"
         mode="alternate"
-        pending="Recording more achievements..."
+        pending={<span className="text-xs sm:text-sm">Recording more achievements...</span>}
       >
         {TIMELINE_DATA.map((item, index) => (
           <Timeline.Item key={item.companyName}>
@@ -187,7 +187,7 @@ function Links() {
                className="transform p-1.5 transition duration-300 hover:scale-110"
             >
               <img src={src}
-                   className="w-7"
+                   className="w-6 sm:w-8"
                    alt={alt}
               />
             </a>
@@ -207,7 +207,7 @@ function Meeting() {
       <div className="flex justify-center">
         <a
           href="https://proghusam.youcanbook.me/"
-          className="rounded-full bg-[#1F1F1F] px-6 py-3 text-center transition-colors hover:text-[#69b1ff]"
+          className="rounded-full bg-[#1F1F1F] px-4 py-3 sm:px-6 text-xs sm:text-base text-center transition-colors hover:text-[#69b1ff]"
           target="_blank">
           Book a meeting
         </a>
