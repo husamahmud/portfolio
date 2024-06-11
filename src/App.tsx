@@ -71,23 +71,16 @@ const LINKS = [
 ]
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    window.onload = () => setLoading(false)
-
-    return () => {
-      window.onload = () => {
-      }
-    }
+    const handleLoading = () => setIsLoading(false)
+    window.addEventListener('load', handleLoading)
+    return () => window.removeEventListener('load', handleLoading)
   }, [])
 
-  if (loading) return (
-    <Spin indicator={
-      <LoadingOutlined
-        style={{ fontSize: 24 }}
-        spin />}
-    />
+  if (isLoading) return (
+    <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
   )
 
   return (
