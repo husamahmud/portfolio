@@ -1,7 +1,8 @@
+import React from 'react'
 import { useEffect, useState } from 'react'
 
 import { LoadingOutlined } from '@ant-design/icons'
-import { Popover, Spin, Timeline } from 'antd'
+import { Popover, Spin, Timeline, message } from 'antd'
 import { motion } from 'framer-motion'
 
 
@@ -59,9 +60,11 @@ const LINKS = [
     alt: 'LinkedIn',
   },
   {
-    href: 'mailto:proghusam@gmail.com',
+    href: '/',
     src: '/mail.svg',
     alt: 'Email',
+    email: 'developer.husam@gmail.com',
+    action: 'copy',
   },
   {
     href: 'https://curiouscat.live/husamahmud',
@@ -84,7 +87,8 @@ export default function App() {
   }, [])
 
   if (isLoading) return (
-    <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
+    <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }}
+                                      spin />} />
   )
 
   return (
@@ -93,7 +97,6 @@ export default function App() {
       <Name />
       <Time />
       <Links />
-      <Meeting />
     </main>
   )
 }
@@ -141,7 +144,7 @@ function Time() {
         pending={<span className="text-xs sm:text-sm">Recording more achievements...</span>}
       >
         {TIMELINE_DATA.map((item, index) => (
-          <Timeline.Item key={item.companyName}>
+          <Timeline.Item key={index}>
             <motion.div
               initial={{ x: index % 2 === 0 ? 100 : -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -170,21 +173,45 @@ function Time() {
   )
 }
 
+const copyToClipboard = (text: string, e: React.MouseEvent) => {
+  e.preventDefault()
+  navigator.clipboard.writeText(text)
+}
 
 function Links() {
+  const [messageApi, contextHolder] = message.useMessage()
+
   return (
     <motion.div
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'anticipate', delay: 2 }}>
       <div className="mx-auto flex w-fit items-center justify-center gap-1 rounded-full max-sm:px-4 max-sm:py-1 sm:mb-4">
-        {LINKS.map(({ href, src, alt }) => (
-          <Popover trigger="hover"
-                   content={alt}>
-            <a key={alt}
-               href={href}
-               target="_blank"
-               className="transform p-1.5 transition duration-300 hover:scale-110"
+        {LINKS.map(({ href, src, alt, email, action }) => (
+          <Popover
+            trigger="hover"
+            content={alt}
+            key={href}
+          >
+            {contextHolder}
+            <a
+              key={alt}
+              href={href}
+              onClick={
+                action === 'copy'
+                  ? (e) => {
+                    copyToClipboard(email, e)
+                    messageApi.open({
+                      type: 'success',
+                      content: 'Email address copied to clipboard!',
+                      duration: 2,
+                    })
+                  }
+                  : undefined
+              }
+
+              target={action === 'copy' ? '_self' : '_blank'}
+              className="transform p-1.5 transition duration-300 hover:scale-110"
             >
               <img src={src}
                    className="w-6 sm:w-8"
@@ -193,24 +220,6 @@ function Links() {
             </a>
           </Popover>
         ))}
-      </div>
-    </motion.div>
-  )
-}
-
-function Meeting() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'anticipate', delay: 2.5 }}>
-      <div className="flex justify-center">
-        <a
-          href="https://proghusam.youcanbook.me/"
-          className="rounded-full bg-[#1F1F1F] px-4 py-3 sm:px-6 text-xs sm:text-base text-center transition-colors hover:text-[#69b1ff]"
-          target="_blank">
-          Book a meeting
-        </a>
       </div>
     </motion.div>
   )
