@@ -79,17 +79,25 @@ export default function App() {
     }
   }, [])
 
-  if (isLoading) return (
-    <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }}
-                                      spin />} />
-  )
-
   return (
-    <main className="w-full min-h-svh rounded-[30px] px-5 py-5 text-stone-300 sm:w-[600px] sm:px-8 sm:py-5 font-sans">
-      <Img />
-      <Name />
-      <Time />
-      <Links />
+    <main className="flex flex-col justify-center min-h-svh rounded-[30px] px-5 py-5 text-stone-300 sm:w-[600px] sm:px-8 sm:py-5 font-sans">
+      {isLoading ? (
+        <Spin
+          indicator={
+            <LoadingOutlined
+              style={{ fontSize: 24 }}
+              spin />
+          }
+        />
+      ) : (
+        <>
+          <Img />
+          <Name />
+          <Time />
+          <Links />
+        </>
+      )}
+
     </main>
   )
 }
