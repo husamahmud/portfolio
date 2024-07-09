@@ -85,7 +85,7 @@ export default function App() {
   )
 
   return (
-    <main className="w-full rounded-[30px] px-5 py-5 text-stone-300 sm:w-[600px] sm:px-8 sm:py-5 font-sans">
+    <main className="w-full min-h-svh rounded-[30px] px-5 py-5 text-stone-300 sm:w-[600px] sm:px-8 sm:py-5 font-sans">
       <Img />
       <Name />
       <Time />
