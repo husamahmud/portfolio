@@ -11,35 +11,28 @@ const TIMELINE_DATA = [
     description: 'Electrical Engineering Student',
   },
   {
-    description: 'Software Engineer at',
-    url: 'https://www.alxafrica.com/',
-    companyName: 'ALX',
+    description: 'Software Engineering at ALX',
   },
   {
-    description: 'Aced 230+ problems on',
-    url: 'https://leetcode.com/u/husamahmud/',
-    companyName: 'LeetCode',
+    description: 'Aced 240+ problems on LeetCode',
   },
   {
     description: 'Built',
     url: 'https://chromewebstore.google.com/detail/leetpush/gmagfdabfjaipjgdfgddjgongeemkalf',
-    companyName: 'LeetPush',
-    rest: 'Chrome Ext.',
+    extName: 'LeetPush',
+    rest: 'Chrome Extension',
   },
   {
-    description: 'Frontend Engineer at',
-    url: 'https://www.linkedin.com/company/linkedtrust',
-    companyName: 'LinkedTrust',
+    description: 'Software Eng. at LinkedTrust',
   },
   {
-    description: 'Participant at',
-    url: 'https://manara.tech/',
-    companyName: 'Manara',
+    description: 'Software Eng. Intern at Manara',
   },
   {
-    description: 'Intern at',
-    url: 'https://www.linkedin.com/company/gamifiersa/',
-    companyName: 'GamifierSA',
+    description: 'Frontend Intern at GamifierSA',
+  },
+  {
+    description: 'Software Eng. Intern at ActusGo',
   },
 ]
 
@@ -134,7 +127,6 @@ function Name() {
   )
 }
 
-
 function Time() {
   return (
     <div className="flex justify-center">
@@ -156,14 +148,14 @@ function Time() {
             >
               <p className="text-xs sm:text-base">
                 {item.description}{' '}
-                {item.companyName && (
+                {item.extName && (
                   <a href={item.url}
                      target="_blank"
                      className="text-[#69b1ff]">
-                    {item.companyName}{' '}
+                    {item.extName}{' '}
                   </a>
                 )}
-                {item.rest && `${item.rest}`}
+                {item.rest}
               </p>
             </motion.div>
           </Timeline.Item>
