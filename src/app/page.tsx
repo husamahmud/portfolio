@@ -48,7 +48,7 @@ function Name() {
       transition={{ duration: 0.7, ease: 'anticipate' }}
     >
       <p className="mb-4 text-center text-base sm:mb-9 sm:text-2xl">
-        <span className="block font-semibold">Hey, I'm Hüsam.</span>
+        <span className="block font-semibold">Hey, I&apos;m Hüsam.</span>
         Frontend Software Engineer.
       </p>
     </motion.div>
