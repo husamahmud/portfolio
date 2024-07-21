@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+		to bottom,
+		transparent,
+		rgb(var(--background-end-rgb))
+	) rgb(var(--background-start-rgb));
+
+
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	color-scheme: dark;
+}
+
+body::before {
+	--size: 80px;
+	--line: hsl(0 0% 95% / 0.15);
+
+	content: "";
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	background: linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+	linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+	mask: linear-gradient(-15deg, transparent 30%, white);
+	top: 0;
+	z-index: -1;
+	transform: translate3d(0, 0, -100vmin);
+}
+
+.ant-timeline-item-tail {
+	background-color: #666666;
+}
+
+.hsm-wrapper::before {
+	content: '';
+	position: absolute;
+	inset: -10px;
+	background: conic-gradient(
+		rgb(12, 10, 9),
+		#1677ff
+	);
+	border-radius: 50%;
+	animation: rotate 5s linear infinite;
+	filter: blur(20px);
+}
+
+.hsm-wrapper {
+	position: relative;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
