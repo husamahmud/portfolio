@@ -1,9 +1,8 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import type { Metadata } from 'next'
 import { Raleway } from 'next/font/google'
 
 import './globals.css'
-import Loading from '@/app/loading'
 
 const raleway = Raleway({ subsets: ['latin'] })
 
@@ -29,9 +28,7 @@ export default function RootLayout({ children }: Readonly<{
   return (
     <html lang="en">
     <body className={raleway.className}>
-    <Suspense fallback={<Loading />}>
-      {children}
-    </Suspense>
+    {children}
     </body>
     </html>
   )

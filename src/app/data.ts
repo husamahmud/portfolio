@@ -26,6 +26,9 @@ export const TIMELINE_DATA = [
   {
     description: 'Software Eng. Intern at ActusGo',
   },
+  {
+    description: 'Graduated from ALX Software Eng.',
+  },
 ]
 
 export const LINKS = [
