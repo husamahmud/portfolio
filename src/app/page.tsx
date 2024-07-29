@@ -22,7 +22,7 @@ export default function Home() {
   if (loading) return <Loading />
 
   return (
-    <main className="flex flex-col py-10">
+    <main className="flex flex-col py-10 overscroll-x-none">
       <Img />
       <Name />
       <Time />
