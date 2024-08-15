@@ -7,7 +7,7 @@ const Loader = () => {
       <Spin
         indicator={
           <LoadingOutlined
-            style={{ fontSize: 24 }}
+            style={{ fontSize: 42 }}
             spin
           />
         }
