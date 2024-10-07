@@ -30,33 +30,3 @@ export const TIMELINE_DATA = [
     description: 'Graduated from ALX Software Eng.',
   },
 ]
-
-export const LINKS = [
-  {
-    href: '/resume_husam.pdf',
-    src: '/cv.svg',
-    alt: 'CV',
-  },
-  {
-    href: 'https://github.com/husamahmud',
-    src: '/github.svg',
-    alt: 'GitHub',
-  },
-  {
-    href: 'https://www.linkedin.com/in/husamahmud/',
-    src: '/linkedin.svg',
-    alt: 'LinkedIn',
-  },
-  {
-    href: '/',
-    src: '/mail.svg',
-    alt: 'Email',
-    email: 'developer.husam@gmail.com',
-    action: 'copy',
-  },
-  {
-    href: 'https://curiouscat.live/husamahmud',
-    src: '/curious-cat.svg',
-    alt: 'Curious Cat',
-  },
-]
