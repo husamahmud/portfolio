@@ -29,4 +29,10 @@ export const TIMELINE_DATA = [
   {
     description: 'Graduated from ALX Software Eng.',
   },
+  {
+    description: 'Developed',
+    extName: 'Rentop',
+    url: 'https://rentop-web.vercel.app/',
+    rest: 'platform',
+  },
 ]
