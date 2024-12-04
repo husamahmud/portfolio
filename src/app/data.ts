@@ -49,9 +49,4 @@ export const TIMELINE_DATA = [
     extName: 'MySocialScribe',
     url: 'https://mysocialscribe.com/',
   },
-  {
-    description: 'Frontend Eng. at',
-    extName: 'Link Development',
-    url: 'https://www.linkedin.com/company/linkdev4it/',
-  },
 ]
